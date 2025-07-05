@@ -1,0 +1,67 @@
+{% extends "Shop/index.html" %}
+{% block body %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<div class="container d-flex justify-content-center my-5">
+  <div class="card shadow p-4 w-100" style="max-width: 700px;">
+    <h4 class="text-center mb-4">Edit Product</h4>
+    <form action="/editpro_post/{{ view.id }}" method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+
+      <div class="mb-3">
+        <label for="name" class="form-label">Product Name</label>
+        <input type="text" class="form-control" id="name" name="pname" value="{{ view.Pname }}" pattern="[a-zA-Z]{*}" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="pdate" class="form-label">Purchase Date</label>
+        <input type="date" class="form-control" id="pdate" name="pdate" value="{{ view.Purchase_date|date:'Y-m-d' }}" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="mdate" class="form-label">Manufacture Date</label>
+        <input type="date" class="form-control" id="mdate" name="mdate" value="{{ view.Man_date|date:'Y-m-d' }}" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="price" class="form-label">Price</label>
+        <input type="text" class="form-control" id="price" name="price" value="{{ view.Price }}" pattern="\d+(\.\d{2})?" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="cname" class="form-label">Category Name</label>
+        <select class="form-control" id="name" name="cname" required>
+          <option selected disabled>Select category</option>
+          {% for i in see %}
+          <option value="{{ i.id }}" {% if view.CATEGOREY.id == i.id %} selected {% endif %}> {{ i.Name }}</option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label for="img" class="form-label">Change Image</label>
+        <input type="file" class="form-control" id="img" name="img" accept="image/*">
+        {% if view.Image %}
+        <img src="{{ view.Image.url }}" alt="Current Image" class="img-thumbnail mt-2" style="max-height: 150px;">
+        {% endif %}
+      </div>
+    <div class="mb-3">
+        <label for="stock" class="form-label">Stock</label>
+        <input type="text" class="form-control" id="stock" name="stock" value="{{ view.Stock }}" required>
+      </div>
+
+      <div class="text-center">
+        <button type="submit" class="btn btn-primary px-4">Update</button>
+      </div>
+    </form>
+  </div>
+</div>
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends "Shop/index.html" %}
+{% block body %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Order List</title>
+</head>
+
+<body>
+<div class="container my-5">
+  <div class="card shadow p-4">
+    <h4 class="mb-4 text-center">Order List</h4>
+    <div class="table-responsive">
+      <table class="table table-bordered table-hover text-center align-middle">
+        <thead class="table-dark">
+          <tr>
+            <th>Sl. No</th>
+            <th>Name</th>
+            <th>Date</th>
+            <th>Amount</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for i in view %}
+          <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ i.USER.Uname }}</td>
+            <td>{{ i.date }}</td>
+            <td>{{ i.Amount }}</td>
+            <td>{{ i.Status }}</td>
+            <td>
+              <a href="/updatestatus/{{ i.id }}#ab" class="btn btn-sm btn-warning mb-1">Update Status</a>
+              <a href="/viewsuborder/{{ i.id }}#ab" class="btn btn-sm btn-info">Order List</a>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+</body>
+</html>
+{% endblock %}

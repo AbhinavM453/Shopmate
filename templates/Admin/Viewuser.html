@@ -1,0 +1,38 @@
+{% extends "Admin/index.html" %}
+{% block body %}
+<div class="container my-5">
+  <h2 class="mb-4 text-center">User Details</h2>
+  <div class="table-responsive">
+    <table class="table table-bordered table-striped table-hover">
+      <thead class="table-dark">
+        <tr>
+          <th>Sl. No</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th>Place</th>
+          <th>Post</th>
+          <th>Pin</th>
+          <th>DOB</th>
+          <th>Image</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for i in view %}
+        <tr>
+          <td>{{ forloop.counter }}</td>
+          <td>{{ i.Uname }}</td>
+          <td>{{ i.Email }}</td>
+          <td>{{ i.Phone }}</td>
+          <td>{{ i.Place }}</td>
+          <td>{{ i.post }}</td>
+          <td>{{ i.pin }}</td>
+          <td>{{ i.Dob }}</td>
+          <td><img src="{{ i.Image }}" class="img-thumbnail" style="width: 100px; height: 100px;" alt="User Image"></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

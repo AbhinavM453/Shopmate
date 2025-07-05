@@ -1,0 +1,46 @@
+{% extends "Admin/index.html" %}
+{% block body %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<div class="container my-5">
+  <h2 class="mb-4 text-center">Shop Details</h2>
+  <div class="table-responsive">
+    <table class="table table-bordered table-striped table-hover">
+      <thead class="table-dark">
+    <tr>
+      <th scope="row">Slno</th>
+      <td>Name</td>
+      <td>Email</td>
+      <td>Phone</td>
+      <td>Lattittude</td>
+      <td>Ownername</td>
+      <td>Place</td>
+      <td>Image</td>
+    </tr>
+    </thead>
+    <tbody>
+      {% for i in view %}
+    <tr>
+      <th scope="row">{{ forloop.counter }}&nbsp;</th>
+      <td>{{ i.Sname }}&nbsp;</td>
+      <td>{{ i.Email }}&nbsp;</td>
+      <td>{{ i.phone }}&nbsp;</td>
+      <td><p><a href="http://www.google.com/maps/?q={{ i.lattitude }},{{ i.lognitude }}">Location</a></p></td>
+      <td>{{ i.Ownername }}&nbsp;</td>
+      <td>{{ i.Place }}&nbsp;</td>
+      <td><img src="{{ i.Image }}" width="100" height="100"> &nbsp;</td>
+    </tr>
+      {% endfor %}
+  </tbody>
+    </table>
+  </div>
+</div>
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends "Admin/index.html" %}
+{% block body %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<div class="container my-5">
+  <h2 class="mb-4 text-center">Compalints List</h2>
+  <div class="table-responsive">
+    <table class="table table-bordered table-striped table-hover">
+      <thead class="table-dark">
+    <tr>
+      <th scope="row">Slno</th>
+        <td>Name</td>
+      <td>Date</td>
+        <td>Complaints</td>
+      <td>&nbsp;</td>
+    </tr>
+    </thead>
+    <tbody>
+      {% for i in view %}
+    <tr>
+      <th scope="row">{{ forloop.counter }}&nbsp;</th>
+      <td>{{ i.USER.Uname }}&nbsp;</td>
+         <td>{{ i.date }}&nbsp;</td>
+        <td>{{ i.complaints }}&nbsp;</td>
+      <td><a href="/sndreplay/{{ i.id }}#ab" onclick="alert('do you want to replay')">SendReplay</a></td>
+    </tr>
+      {% endfor %}
+  </tbody>
+    </table>
+  </div>
+</div>
+</body>
+</html>
+{% endblock %}
