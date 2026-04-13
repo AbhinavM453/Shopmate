@@ -1,0 +1,52 @@
+{% extends "Shop/index.html" %}
+{% block body %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<div class="container my-5">
+  <div class="card shadow p-4">
+    <h4 class="text-center mb-4">Shop Details</h4>
+    <div class="table-responsive">
+      <table class="table table-bordered table-hover align-middle text-center">
+        <thead class="table-dark">
+          <tr>
+            <th>Sl. No</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Location</th>
+            <th>Owner Name</th>
+            <th>Place</th>
+            <th>Image</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for i in view %}
+          <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ i.Sname }}</td>
+            <td>{{ i.Email }}</td>
+            <td>{{ i.phone }}</td>
+      <td><p><a href="http://www.google.com/maps/?q={{ i.lattitude }},{{ i.lognitude }}">Location</a></p></td>
+            <td>{{ i.Ownername }}</td>
+            <td>{{ i.Place }}</td>
+            <td><img src="{{ i.Image }}" alt="Shop Image" class="img-thumbnail" width="100" height="100"></td>
+            <td>
+              <a href="/editshop/{{ i.id }}#ab" class="btn btn-sm btn-primary">Edit</a>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+</body>
+</html>
+{% endblock %}

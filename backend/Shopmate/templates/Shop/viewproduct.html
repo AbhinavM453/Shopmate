@@ -1,0 +1,57 @@
+{% extends "Shop/index.html" %}
+{% block body %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<div class="container my-5">
+  <div class="card shadow p-4">
+    <h4 class="mb-4 text-center">Product List</h4>
+    <div class="table-responsive">
+      <table class="table table-bordered table-hover align-middle text-center">
+        <thead class="table-dark">
+          <tr>
+            <th>Sl. No</th>
+            <th>Name</th>
+            <th>Purchase Date</th>
+            <th>Manufacture Date</th>
+            <th>Price</th>
+            <th>Category Name</th>
+            <th>Shop Name</th>
+            <th>Stock</th>
+            <th>Image</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for i in view %}
+          <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ i.Pname }}</td>
+            <td>{{ i.Purchase_date }}</td>
+            <td>{{ i.Man_date }}</td>
+            <td>{{ i.Price }}</td>
+            <td>{{ i.CATEGOREY.Name }}</td>
+            <td>{{ i.SHOP.Sname }}</td>
+            <td>{{ i.Stock }}</td>
+            <td>
+              <img src="{{ i.Image }}" alt="Product Image" class="img-thumbnail" width="100" height="100">
+            </td>
+            <td>
+              <a href="/editpro/{{ i.id }}#ab" class="btn btn-sm btn-primary mb-1" onclick="alert('are you sure?')">Edit</a>
+              <a href="/deletepro/{{ i.id }}" class="btn btn-sm btn-danger" onclick="alert('do you want to delete?')" >Delete</a>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+</body>
+</html>
+{% endblock %}
